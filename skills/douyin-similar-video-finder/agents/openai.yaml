@@ -1,0 +1,6 @@
+interface:
+  display_name: "抖音相似视频查找"
+  short_description: "用 Ego 筛选至少千赞的相似抖音作品，每类十条并导出链接文档"
+  default_prompt: "使用 $douyin-similar-video-finder，通过 Ego 查找与这些参考画面风格相似且至少 1000 赞的抖音视频，每类 10 条，生成带点赞数和可点击链接的 Word 文档。"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Douyin Womens Shoes Emotion Copy"
+  short_description: "Generate emotional peer-style Douyin copy for womens shoes."
+  default_prompt: "Use $douyin-womens-shoes-emotion-copy to write women-shoes emotional Douyin captions."
+policy:
+  allow_implicit_invocation: true

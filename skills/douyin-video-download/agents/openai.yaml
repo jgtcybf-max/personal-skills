@@ -1,0 +1,4 @@
+interface:
+  display_name: "抖音视频下载"
+  short_description: "从抖音分享链接下载原生高清视频到指定目录，并核验清晰度与完整性"
+  default_prompt: "使用 $douyin-video-download，把这个抖音分享链接的视频按原生1080P下载到我指定的文件夹。"

@@ -1,0 +1,6 @@
+interface:
+  display_name: "每日复盘助手"
+  short_description: "结合微信和Codex操作，简要概括每天推进的工作、实际交付与卡点"
+  default_prompt: "使用 $daily-work-review，结合微信和电脑里的Codex记录，简单告诉我今天在干什么、做成什么、还卡在哪里。"
+policy:
+  allow_implicit_invocation: true

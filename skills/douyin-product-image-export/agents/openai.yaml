@@ -1,0 +1,4 @@
+interface:
+  display_name: "抖音商品图片导出"
+  short_description: "下载抖音商品全部主图与详情原图，按顺序整理并生成来源清单、预览和压缩包"
+  default_prompt: "请使用 $douyin-product-image-export 下载这个抖音商品的全部主图和详情页原图，按页面顺序整理，生成来源清单、主图预览联系表和桌面压缩包。"

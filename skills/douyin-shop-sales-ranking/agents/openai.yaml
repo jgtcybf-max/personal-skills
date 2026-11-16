@@ -1,0 +1,4 @@
+interface:
+  display_name: "抖音店铺7天销量排行"
+  short_description: "从商品链接提取店铺商品、图片、价格并核验近7天销量口径"
+  default_prompt: "使用 $douyin-shop-sales-ranking 分析这个抖音商品所属店铺，并导出含图片、价格和近7天销量口径的排行表。"

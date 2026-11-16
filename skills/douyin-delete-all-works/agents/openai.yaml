@@ -1,0 +1,4 @@
+interface:
+  display_name: "抖音创作者中心批量删除作品"
+  short_description: "安全逐条删除抖音创作者中心全部作品并验证每次页面刷新状态"
+  default_prompt: "Use $douyin-delete-all-works to delete every work in my currently open and logged-in Douyin Creator Center Chrome after explicit confirmation."

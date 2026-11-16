@@ -1,0 +1,6 @@
+interface:
+  display_name: "抖音挂车发布（Ego）"
+  short_description: "通过 Ego 上传抖音挂车视频，支持单条、批量排期及女鞋情绪文案。"
+  default_prompt: "Use $douyin-multi-browser-publish-cart to prepare Douyin videos with shopping cart links in Ego and publish when authorized."
+policy:
+  allow_implicit_invocation: true
