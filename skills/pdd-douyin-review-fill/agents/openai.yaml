@@ -1,0 +1,4 @@
+interface:
+  display_name: "拼多多抖音同款审核填表"
+  short_description: "按拼多多商品ID匹配抖音同款规格，核对SKU并填写百亿审核表"
+  default_prompt: "使用 $pdd-douyin-review-fill，按我给出的拼多多商品 ID 查找同款抖音链接与对应 SKU，并填入指定审核表。"
