@@ -1,0 +1,723 @@
+[
+  {
+    "id": "shoe-competitor-sourcing",
+    "title": "女鞋选款与货源核价",
+    "summary": "从真实竞品商品和价格出发，比较款式、成本与货源，形成可行动的候选表。",
+    "platforms": [
+      "抖音小店",
+      "拼多多",
+      "1688"
+    ],
+    "triggers": [
+      "这家店哪些鞋值得做",
+      "找这双鞋的货源",
+      "同款比价",
+      "选款核利润"
+    ],
+    "inputs": [
+      "参考商品或店铺链接，或清晰商品图",
+      "要研究的平台、范围和时间段",
+      "已知货号、目标售价与成本资料；没有则标待补",
+      "可用后台/供应商报价或用户提供的数据"
+    ],
+    "steps": [
+      {
+        "action": "用商品ID确定样本，分别标出完整店铺、直播商品卡或单品范围；记录价格、状态、链接和采集时间。",
+        "route": [
+          "douyin-shop-sales-ranking",
+          "ego-browser"
+        ]
+      },
+      {
+        "action": "有明确七日字段或同商品ID的七日间隔快照才计算七日销量；否则交付当前快照，累计销量与互动仅作各自字段。",
+        "route": [
+          "douyin-shop-sales-ranking"
+        ]
+      },
+      {
+        "action": "需查看鞋款图片时导出原始主图/详情；通过真实 Ego 查看1688候选，核对鞋型、颜色尺码、起订量、阶梯价、运费与现货，不因图片近似直接判同款。",
+        "route": [
+          "douyin-product-image-export",
+          "ego-browser"
+        ]
+      },
+      {
+        "action": "使用同一订单口径列出到手收入、货品、履约、平台/佣金、售后和获客成本；列建议样品、待核证事项与淘汰原因。",
+        "route": [
+          "spreadsheets:Spreadsheets"
+        ]
+      }
+    ],
+    "outputs": [
+      "候选鞋款对照表：商品ID/图/来源/采集时刻/售价/报价条件/已知成本/证据等级",
+      "先做样品、补信息或暂不做的清单及理由"
+    ],
+    "acceptance": [
+      "同一商品只按稳定ID关联；同图不同ID不合并销量",
+      "七日、累计、估算、未知分列，缺失不填0",
+      "利润使用用户真实成本或明示情景，不能把报价当成交价",
+      "没有创建订单、支付、联系供应商或开启付费查询"
+    ],
+    "local_skills": [
+      "douyin-shop-sales-ranking",
+      "douyin-product-image-export",
+      "ego-browser",
+      "spreadsheets:Spreadsheets"
+    ],
+    "catalog_references": [
+      {
+        "id": "nexscope-ai--ecommerce-competitor-analysis",
+        "name": "ecommerce-competitor-analysis",
+        "title": "电商竞品分析",
+        "author": "nexscope-ai",
+        "repo": "nexscope-ai/eCommerce-Skills",
+        "source_url": "https://github.com/nexscope-ai/eCommerce-Skills/blob/c5ba892a1cc3178626577aed1dbde5e62a82f1ac/ecommerce-competitor-analysis/SKILL.md",
+        "source_commit": "c5ba892a1cc3178626577aed1dbde5e62a82f1ac",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "模型及外部服务费用另计",
+        "requirements": [
+          "支持 SKILL.md 的 AI 客户端",
+          "按任务提供商品、市场或店铺资料"
+        ],
+        "purpose": "补充竞品定位、价格和营销维度，不提供国内平台实时接口",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      },
+      {
+        "id": "linkfox-ai--linkfox-1688-search-by-image",
+        "name": "linkfox-1688-search-by-image",
+        "title": "1688 以图找货",
+        "author": "linkfox-ai",
+        "repo": "linkfox-ai/linkfox-skills",
+        "source_url": "https://github.com/linkfox-ai/linkfox-skills/blob/873c9327d6d49695ba8ff1ef131bcd6d85a8b437/skills/linkfox-1688-search-by-image/SKILL.md",
+        "source_commit": "873c9327d6d49695ba8ff1ef131bcd6d85a8b437",
+        "license": "MIT",
+        "tested": false,
+        "capability": "数据查询",
+        "cost": "Skill 开源；LinkFox 调用消耗算力，按服务计费",
+        "requirements": [
+          "LinkFox 账号及 LINKFOX_AGENT_API_KEY",
+          "Python 与完整 Skill 配套文件",
+          "店铺私有数据或写入操作还需平台授权及授权依赖 Skill"
+        ],
+        "purpose": "可选付费以图找货数据入口，安装与账号均需另核实",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      },
+      {
+        "id": "linkfox-ai--linkfox-1688-product-detail",
+        "name": "linkfox-1688-product-detail",
+        "title": "1688 商品详情",
+        "author": "linkfox-ai",
+        "repo": "linkfox-ai/linkfox-skills",
+        "source_url": "https://github.com/linkfox-ai/linkfox-skills/blob/873c9327d6d49695ba8ff1ef131bcd6d85a8b437/skills/linkfox-1688-product-detail/SKILL.md",
+        "source_commit": "873c9327d6d49695ba8ff1ef131bcd6d85a8b437",
+        "license": "MIT",
+        "tested": false,
+        "capability": "数据查询",
+        "cost": "Skill 开源；LinkFox 调用消耗算力，按服务计费",
+        "requirements": [
+          "LinkFox 账号及 LINKFOX_AGENT_API_KEY",
+          "Python 与完整 Skill 配套文件",
+          "店铺私有数据或写入操作还需平台授权及授权依赖 Skill"
+        ],
+        "purpose": "可选付费1688详情数据入口，不能视作已开通",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      }
+    ],
+    "external_dependency_boundary": "公开网页使用真实 Ego；LinkFox需要账号、API Key并消耗算力。本工作流默认不调用付费接口、不采购。",
+    "desc": "从真实竞品商品和价格出发，比较款式、成本与货源，形成可行动的候选表。",
+    "platform": "抖音小店 / 拼多多 / 1688",
+    "names": [
+      "douyin-shop-sales-ranking",
+      "douyin-product-image-export",
+      "ego-browser",
+      "spreadsheets:Spreadsheets",
+      "ecommerce-competitor-analysis",
+      "linkfox-1688-search-by-image",
+      "linkfox-1688-product-detail"
+    ],
+    "service_note": "公开网页使用真实 Ego；LinkFox需要账号、API Key并消耗算力。本工作流默认不调用付费接口、不采购。"
+  },
+  {
+    "id": "shoe-product-evidence-kit",
+    "title": "同款审核与商品资料包",
+    "summary": "核对拼多多/抖音SKU，整理可追溯商品图、规格与审核表，减少货号和颜色串款。",
+    "platforms": [
+      "拼多多",
+      "抖音小店"
+    ],
+    "triggers": [
+      "新品上百亿审核表",
+      "拼多多ID匹配抖音同款",
+      "整理商品主图和详情图",
+      "鞋模板填图"
+    ],
+    "inputs": [
+      "本批拼多多商品ID和可用抖音商品链接",
+      "用户指定工作簿或当前用途明确的模板",
+      "货号、颜色、尺码等实际规格资料",
+      "需要的主图/详情图范围"
+    ],
+    "steps": [
+      {
+        "action": "先读模板表头、说明与示例，确定一商品一行或逐SKU，并确认所谓uid是SKU规格ID还是其他字段。",
+        "route": [
+          "pdd-douyin-review-fill",
+          "spreadsheets:Spreadsheets"
+        ]
+      },
+      {
+        "action": "以本批商品ID查询规格，与抖音标题、鞋型、主图和同规格SKU交叉核对；无法确认的记录留待核验。",
+        "route": [
+          "pdd-douyin-review-fill",
+          "ego-browser"
+        ]
+      },
+      {
+        "action": "导出需要的原分辨率主图和详情，按商品/来源归档；需要图表模板才插入图片，保持一张图与商品列的映射。",
+        "route": [
+          "douyin-product-image-export",
+          "shoe-template-image-fill"
+        ]
+      },
+      {
+        "action": "保存独立成品工作簿，校验长ID文本、规格对应、图片与链接；商品文案只用已确认事实，未确认皮革/PU等成分不写成事实。",
+        "route": [
+          "spreadsheets:Spreadsheets"
+        ]
+      }
+    ],
+    "outputs": [
+      "已保存的审核工作簿与未确认条目清单",
+      "带来源清单的商品图片资料包",
+      "供文案/视频后续复用的已确认商品事实表"
+    ],
+    "acceptance": [
+      "商品ID、SKU ID与规格逐项对应，不把店铺/账号ID填到SKU栏",
+      "保留原模板与原始下载文件，成品可打开且图片不串列",
+      "文字、颜色、尺码与货号保持用户原写法；疑似错误不擅改",
+      "只准备/填表，不代提交平台审核，除非本次另有明确要求"
+    ],
+    "local_skills": [
+      "pdd-douyin-review-fill",
+      "douyin-product-image-export",
+      "shoe-template-image-fill",
+      "spreadsheets:Spreadsheets",
+      "ego-browser"
+    ],
+    "catalog_references": [
+      {
+        "id": "nexscope-ai--product-description-generator",
+        "name": "product-description-generator",
+        "title": "商品描述写作",
+        "author": "nexscope-ai",
+        "repo": "nexscope-ai/eCommerce-Skills",
+        "source_url": "https://github.com/nexscope-ai/eCommerce-Skills/blob/c5ba892a1cc3178626577aed1dbde5e62a82f1ac/product-description-generator/SKILL.md",
+        "source_commit": "c5ba892a1cc3178626577aed1dbde5e62a82f1ac",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "模型及外部服务费用另计",
+        "requirements": [
+          "支持 SKILL.md 的 AI 客户端",
+          "按任务提供商品、市场或店铺资料"
+        ],
+        "purpose": "参考商品描述组织方法；写作基于事实表，不替代图片/规格核对",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      }
+    ],
+    "external_dependency_boundary": "模板填表与图片整理不需要LinkFox等付费服务。平台页面需要登录时由用户在Ego完成；不取得隐藏数据。",
+    "desc": "核对拼多多/抖音SKU，整理可追溯商品图、规格与审核表，减少货号和颜色串款。",
+    "platform": "拼多多 / 抖音小店",
+    "names": [
+      "pdd-douyin-review-fill",
+      "douyin-product-image-export",
+      "shoe-template-image-fill",
+      "spreadsheets:Spreadsheets",
+      "ego-browser",
+      "product-description-generator"
+    ],
+    "service_note": "模板填表与图片整理不需要LinkFox等付费服务。平台页面需要登录时由用户在Ego完成；不取得隐藏数据。"
+  },
+  {
+    "id": "reference-to-shoe-video",
+    "title": "参考视频转女鞋脚本",
+    "summary": "拆解参考镜头与声音，转成能直接拍或生成的女鞋镜头方案。",
+    "platforms": [
+      "抖音小店",
+      "通用"
+    ],
+    "triggers": [
+      "这条视频怎么拍的",
+      "把这个视频改成我的鞋",
+      "拆镜头写女鞋脚本",
+      "根据参考做换鞋提示词"
+    ],
+    "inputs": [
+      "参考视频本地文件或链接",
+      "目标鞋款图片/货号与已知卖点",
+      "要实拍脚本还是AI替换提示词；从当前请求判断",
+      "需要保留的动作、构图、配乐/口播及交付格式"
+    ],
+    "steps": [
+      {
+        "action": "需要本地素材时下载参考并核对时长/尺寸；保留原视频，默认抽取音频为MP3。",
+        "route": [
+          "douyin-video-download"
+        ]
+      },
+      {
+        "action": "逐镜检查素材来源、动作、镜头、字幕包装、画中画、声音事件和切点；不能仅凭口播或封面臆测画面。",
+        "route": [
+          "rea-video"
+        ]
+      },
+      {
+        "action": "把可复用结构改写成目标鞋款实拍分镜；有商品图时编写保留原视频动作构图的换鞋提示词，先描述目标外观与表面质感，不认定未知材质。需要完整剧本、原帧故事板和自包含剧情提示词时才使用video-master。",
+        "route": [
+          "douyin-shoe-video-recreate",
+          "video-master"
+        ]
+      },
+      {
+        "action": "对照原片核验镜头顺序、时间、鞋款露出、人物与环境连续性；需要静音/原音轨时单独输出，真实成片才进入媒体核验。",
+        "route": [
+          "douyin-shoe-video-recreate"
+        ]
+      }
+    ],
+    "outputs": [
+      "按时间码排列的镜头表、拍摄动作与女鞋脚本",
+      "按用户需求附AI替换提示词、原音轨MP3或静音视频",
+      "来源判断及仍需确认的镜头/材质"
+    ],
+    "acceptance": [
+      "每个镜头对应实际参考时间段，事实与制作判断分开",
+      "鞋子结构、颜色和已知卖点不因改写而变更",
+      "只输出提示词时不声称生成了成片；参考音轨授权与使用范围按实际任务",
+      "付费生成前落实具体模型/任务范围；估算、实际扣费、退款和净消耗分别记账"
+    ],
+    "local_skills": [
+      "douyin-video-download",
+      "rea-video",
+      "douyin-shoe-video-recreate",
+      "video-master"
+    ],
+    "catalog_references": [
+      {
+        "id": "coreyhaines31--ad-creative",
+        "name": "ad-creative",
+        "title": "广告创意制作指南",
+        "author": "coreyhaines31",
+        "repo": "coreyhaines31/marketingskills",
+        "source_url": "https://github.com/coreyhaines31/marketingskills/blob/1f837447b20bb6f0e72d87b80ece1c221c362c7d/skills/ad-creative/SKILL.md",
+        "source_commit": "1f837447b20bb6f0e72d87b80ece1c221c362c7d",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "Skill 开源；模型、广告预算及外部工具费用另计",
+        "requirements": [
+          "提供产品、受众和已有营销资料",
+          "执行广告或数据操作时另需相应账号与工具授权"
+        ],
+        "purpose": "仅补充创意假设、钩子与迭代思路，不替代实际画面拆解",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      },
+      {
+        "id": "autoagc--linkpix-sales-video",
+        "name": "linkpix-sales-video",
+        "title": "商品带货视频生成",
+        "author": "autoagc",
+        "repo": "autoagc/linkpix-skills",
+        "source_url": "https://github.com/autoagc/linkpix-skills/blob/1f0b0a715c11d2a162c02db9aa68db5ce36cf315/skills/linkpix-sales-video/SKILL.md",
+        "source_commit": "1f0b0a715c11d2a162c02db9aa68db5ce36cf315",
+        "license": "MIT",
+        "tested": false,
+        "capability": "内容生成",
+        "cost": "Skill 开源；青虎 AI 生成服务按模型/任务计费",
+        "requirements": [
+          "qhkit CLI 及青虎 AI 账号登录",
+          "自有或获授权的商品图片、视频素材"
+        ],
+        "purpose": "可选商品带货视频生成服务；未安装，按模型/任务计费",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      }
+    ],
+    "external_dependency_boundary": "下载/拆解和提示词不等于付费生成。dLazy、Linkpix、超级编导等实际云端生成仅按本次明确授权执行，不因安装导航自动提交。",
+    "desc": "拆解参考镜头与声音，转成能直接拍或生成的女鞋镜头方案。",
+    "platform": "抖音小店 / 通用",
+    "names": [
+      "douyin-video-download",
+      "rea-video",
+      "douyin-shoe-video-recreate",
+      "video-master",
+      "ad-creative",
+      "linkpix-sales-video"
+    ],
+    "service_note": "下载/拆解和提示词不等于付费生成。dLazy、Linkpix、超级编导等实际云端生成仅按本次明确授权执行，不因安装导航自动提交。"
+  },
+  {
+    "id": "editing-dispatch-publish",
+    "title": "每日剪辑派单与挂车排期",
+    "summary": "把本批货号和参考链接整理成明确任务；需要发布时再核对成片、商品卡和北京时间排期。",
+    "platforms": [
+      "抖音小店"
+    ],
+    "triggers": [
+      "今天剪这些",
+      "整理剪辑任务",
+      "这批视频挂车发布",
+      "按顺序排期"
+    ],
+    "inputs": [
+      "本批货号与参考链接或已完成视频",
+      "每条或全局剪辑要求",
+      "发布时另需目标账号、文案、商品ID/链接和具体排期"
+    ],
+    "steps": [
+      {
+        "action": "只需整理任务时直接生成可复制微信的文字；当天货号不从昨天推断，单条例外按本次明确指代处理。",
+        "route": [
+          "daily-editing-tasks"
+        ]
+      },
+      {
+        "action": "用户需要拆解或复刻时才转参考视频工作流，避免把派单文字任务扩大成下载/制作。",
+        "route": [
+          "douyin-shoe-video-recreate"
+        ]
+      },
+      {
+        "action": "发布请求中先建立文件→货号→文案→商品ID→准确日期时间的映射，核对视频文件和目标账号。默认自然文件名顺序，用户顺序优先。",
+        "route": [
+          "douyin-multi-browser-publish-cart",
+          "douyin-womens-shoes-emotion-copy",
+          "ego-browser"
+        ]
+      },
+      {
+        "action": "上传、填文案、挂车、排期并逐项核对；按用户明确发布范围提交，用成功页或作品管理核验。结果未知时先查原作品，不重复提交。",
+        "route": [
+          "douyin-multi-browser-publish-cart"
+        ]
+      }
+    ],
+    "outputs": [
+      "一段可复制的每日剪辑任务文字",
+      "如包含发布：逐条文件/商品/时间映射和实际发布或草稿结果"
+    ],
+    "acceptance": [
+      "每条货号完整，不用“同上”；重复链接保留原任务差异并提醒",
+      "当天公共货号与单条例外清楚，不推断“全色”",
+      "相对排期换算为北京时间准确日期，跨天正确",
+      "只整理任务时不在微信代发；未要求发布时停在可审阅稿件/准备结果"
+    ],
+    "local_skills": [
+      "daily-editing-tasks",
+      "douyin-multi-browser-publish-cart",
+      "douyin-womens-shoes-emotion-copy",
+      "ego-browser"
+    ],
+    "catalog_references": [
+      {
+        "id": "coreyhaines31--copywriting",
+        "name": "copywriting",
+        "title": "营销文案写作",
+        "author": "coreyhaines31",
+        "repo": "coreyhaines31/marketingskills",
+        "source_url": "https://github.com/coreyhaines31/marketingskills/blob/1f837447b20bb6f0e72d87b80ece1c221c362c7d/skills/copywriting/SKILL.md",
+        "source_commit": "1f837447b20bb6f0e72d87b80ece1c221c362c7d",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "模型及外部服务费用另计",
+        "requirements": [
+          "支持 SKILL.md 的 AI 客户端",
+          "按任务提供商品、市场或店铺资料"
+        ],
+        "purpose": "参考营销表达的组织方法；不覆盖用户要求逐字保留的文案",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      }
+    ],
+    "external_dependency_boundary": "现有Ego发布流程优先，不另装浏览器上传器。发布账号与购物车功能以当前页面为准，无需为派单开通任何付费API。",
+    "desc": "把本批货号和参考链接整理成明确任务；需要发布时再核对成片、商品卡和北京时间排期。",
+    "platform": "抖音小店",
+    "names": [
+      "daily-editing-tasks",
+      "douyin-multi-browser-publish-cart",
+      "douyin-womens-shoes-emotion-copy",
+      "ego-browser",
+      "copywriting"
+    ],
+    "service_note": "现有Ego发布流程优先，不另装浏览器上传器。发布账号与购物车功能以当前页面为准，无需为派单开通任何付费API。"
+  },
+  {
+    "id": "xiaohongshu-shoe-content",
+    "title": "女鞋种草选题与图文",
+    "summary": "基于真实样本和产品事实做小红书选题、封面与正文，再按要求生成素材或发布。",
+    "platforms": [
+      "小红书"
+    ],
+    "triggers": [
+      "这双鞋做一篇小红书",
+      "找同类爆款笔记",
+      "女鞋种草文案",
+      "图文封面和排版"
+    ],
+    "inputs": [
+      "目标鞋款图、真实特点与穿搭场景",
+      "账号受众/目标；已在上下文明确可直接沿用",
+      "需要研究、文案、图片还是发布的范围",
+      "参考链接、已有草稿或可用素材"
+    ],
+    "steps": [
+      {
+        "action": "用真实Ego查看当前可访问的小红书样本，记录链接、采集时间与可见互动；轻量选题先看3—5篇，按任务范围扩展。",
+        "route": [
+          "xhs-content-ops",
+          "xhs-explore",
+          "ego-browser"
+        ]
+      },
+      {
+        "action": "提炼标题钩子、封面结构、穿搭场景与评论需求；区分可见事实与推测，不照搬原作者文案，也不把累计互动当近期增长。",
+        "route": [
+          "xhs-content-ops",
+          "xiaohongshu-ops"
+        ]
+      },
+      {
+        "action": "完成目标鞋款标题/正文与视觉方案。需要卡片排版时用现有卡片技能；明确要求生成图片才使用相应图像能力，并核对尺寸、文字和鞋款一致性。",
+        "route": [
+          "xhs-note-creator",
+          "baoyu-xhs-images",
+          "gbro-cover-design"
+        ]
+      },
+      {
+        "action": "只按当前要求交付草稿、图片或发布；实际发布用Ego核对账号、图片顺序、可见性与时间，再检查成功页/作品列表。",
+        "route": [
+          "xhs-publish",
+          "ego-browser"
+        ]
+      }
+    ],
+    "outputs": [
+      "有来源样本依据的选题与标题正文",
+      "按请求提供封面/图片方案或实际图片文件",
+      "如已授权发布，附对应作品结果"
+    ],
+    "acceptance": [
+      "商品材质、穿着效果和功效有事实支持，不编造用户评价或销量",
+      "图文围绕一个主题和清楚受众，图片/文案信息一致",
+      "卡片默认参考所选技能的竖版规则，最终图片实际核对，不能只交提示词冒充图片",
+      "只有研究/创作请求时不自动点赞、评论、私信或发布"
+    ],
+    "local_skills": [
+      "xhs-content-ops",
+      "xhs-explore",
+      "xiaohongshu-ops",
+      "xhs-note-creator",
+      "baoyu-xhs-images",
+      "gbro-cover-design",
+      "xhs-publish",
+      "ego-browser"
+    ],
+    "catalog_references": [
+      {
+        "id": "coreyhaines31--customer-research",
+        "name": "customer-research",
+        "title": "客户需求研究",
+        "author": "coreyhaines31",
+        "repo": "coreyhaines31/marketingskills",
+        "source_url": "https://github.com/coreyhaines31/marketingskills/blob/1f837447b20bb6f0e72d87b80ece1c221c362c7d/skills/customer-research/SKILL.md",
+        "source_commit": "1f837447b20bb6f0e72d87b80ece1c221c362c7d",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "Skill 开源；模型、广告预算及外部工具费用另计",
+        "requirements": [
+          "提供产品、受众和已有营销资料",
+          "执行广告或数据操作时另需相应账号与工具授权"
+        ],
+        "purpose": "补充从用户需求与购买动机提炼选题的方法",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      },
+      {
+        "id": "coreyhaines31--copywriting",
+        "name": "copywriting",
+        "title": "营销文案写作",
+        "author": "coreyhaines31",
+        "repo": "coreyhaines31/marketingskills",
+        "source_url": "https://github.com/coreyhaines31/marketingskills/blob/1f837447b20bb6f0e72d87b80ece1c221c362c7d/skills/copywriting/SKILL.md",
+        "source_commit": "1f837447b20bb6f0e72d87b80ece1c221c362c7d",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "模型及外部服务费用另计",
+        "requirements": [
+          "支持 SKILL.md 的 AI 客户端",
+          "按任务提供商品、市场或店铺资料"
+        ],
+        "purpose": "补充价值表达与文案结构，不适配为小红书自动接口",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      }
+    ],
+    "external_dependency_boundary": "网页只用Ego。卡片技能可能只有方法/模板可用，图片渲染或生成能力在当前任务中实际核验；不启动其上游Playwright浏览器，不默认调用付费图像服务。",
+    "desc": "基于真实样本和产品事实做小红书选题、封面与正文，再按要求生成素材或发布。",
+    "platform": "小红书",
+    "names": [
+      "xhs-content-ops",
+      "xhs-explore",
+      "xiaohongshu-ops",
+      "xhs-note-creator",
+      "baoyu-xhs-images",
+      "gbro-cover-design",
+      "xhs-publish",
+      "ego-browser",
+      "customer-research",
+      "copywriting"
+    ],
+    "service_note": "网页只用Ego。卡片技能可能只有方法/模板可用，图片渲染或生成能力在当前任务中实际核验；不启动其上游Playwright浏览器，不默认调用付费图像服务。"
+  },
+  {
+    "id": "commerce-profit-ads-review",
+    "title": "经营利润与投放复盘",
+    "summary": "以真实订单和广告报表核对销售、退货与获客成本，给出下一轮可检验动作。",
+    "platforms": [
+      "抖音小店",
+      "拼多多",
+      "小红书",
+      "通用"
+    ],
+    "triggers": [
+      "昨天卖得怎么样",
+      "这批投放值不值",
+      "按鞋款复盘利润",
+      "广告花费和订单对不上"
+    ],
+    "inputs": [
+      "本次明确日期范围的订单/退款/结算/广告报表",
+      "货品、物流、平台、佣金、售后等实际成本口径",
+      "货号/商品ID与素材ID映射；缺失则仅在可证范围分析",
+      "对比周期和目标指标；没有目标时以事实诊断为先"
+    ],
+    "steps": [
+      {
+        "action": "先核对报表时区、币种、时间范围、指标定义与订单去重键；销售额、支付额、结算收入、退款和净收入分别列出。",
+        "route": [
+          "spreadsheets:Spreadsheets"
+        ]
+      },
+      {
+        "action": "按同一订单/结算口径核算贡献：实际净收入减货品、履约、平台佣金、可归属广告及其他成本；退款已在净收入扣除时不能重复扣。未知成本标缺失，另列情景。",
+        "route": [
+          "spreadsheets:Spreadsheets"
+        ]
+      },
+      {
+        "action": "把素材或货号的曝光、点击、成交、退款与花费放在同一期间比较；公开热度只能补充观察，不能代替后台转化或实际ROI。",
+        "route": [
+          "spreadsheets:Spreadsheets",
+          "xhs-content-ops",
+          "ego-browser"
+        ]
+      },
+      {
+        "action": "区分确定问题、可能原因与下一轮实验。每个实验只改变关键变量，写目标、预算或资源上限、观察窗口和停用条件；没有授权只交建议，不改广告账户。",
+        "route": [
+          "spreadsheets:Spreadsheets"
+        ]
+      }
+    ],
+    "outputs": [
+      "按日期/货号/素材的经营与利润表，含公式和来源",
+      "3项以内优先动作，每项含证据、预期、观察窗口和验收方式",
+      "缺数据清单及可执行的补数办法"
+    ],
+    "acceptance": [
+      "同周期、同币种、同订单/结算口径，退款与成本不重复扣",
+      "广告归因ROI与财务利润分开；平台ROAS定义照原报表记录",
+      "不把空白当0，不把情景利润当已实现利润",
+      "公式无错误，重点区域可读；未授权不增预算、启停计划或修改投放"
+    ],
+    "local_skills": [
+      "spreadsheets:Spreadsheets",
+      "xhs-content-ops",
+      "ego-browser"
+    ],
+    "catalog_references": [
+      {
+        "id": "viethahong--unit-economics",
+        "name": "unit-economics",
+        "title": "单位经济模型分析",
+        "author": "viethahong",
+        "repo": "viethahong/business-skills",
+        "source_url": "https://github.com/viethahong/business-skills/blob/edcc5bff037e05c9b9b41265467c223d40847205/skills/finance/unit-economics/SKILL.md",
+        "source_commit": "edcc5bff037e05c9b9b41265467c223d40847205",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "Skill 开源；模型及实际营销费用另计",
+        "requirements": [
+          "提供商品、预算与目标市场资料",
+          "原文以越南语和越南市场为主，需核对本地适用性",
+          "按原文补齐 product-marketing-context 等关联 Skill"
+        ],
+        "purpose": "参考单品经济与贡献利润方法，平台费率由本次实际资料提供",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      },
+      {
+        "id": "coreyhaines31--ads",
+        "name": "ads",
+        "title": "付费广告规划",
+        "author": "coreyhaines31",
+        "repo": "coreyhaines31/marketingskills",
+        "source_url": "https://github.com/coreyhaines31/marketingskills/blob/1f837447b20bb6f0e72d87b80ece1c221c362c7d/skills/ads/SKILL.md",
+        "source_commit": "1f837447b20bb6f0e72d87b80ece1c221c362c7d",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "Skill 开源；模型、广告预算及外部工具费用另计",
+        "requirements": [
+          "提供产品、受众和已有营销资料",
+          "执行广告或数据操作时另需相应账号与工具授权"
+        ],
+        "purpose": "参考广告实验与预算规划；需先核对国内目标平台规则",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      },
+      {
+        "id": "coreyhaines31--conversion-tracking",
+        "name": "conversion-tracking",
+        "title": "转化追踪配置指南",
+        "author": "coreyhaines31",
+        "repo": "coreyhaines31/marketingskills",
+        "source_url": "https://github.com/coreyhaines31/marketingskills/blob/1f837447b20bb6f0e72d87b80ece1c221c362c7d/skills/conversion-tracking/SKILL.md",
+        "source_commit": "1f837447b20bb6f0e72d87b80ece1c221c362c7d",
+        "license": "MIT",
+        "tested": false,
+        "capability": "方法指导",
+        "cost": "Skill 开源；模型、广告预算及外部工具费用另计",
+        "requirements": [
+          "提供产品、受众和已有营销资料",
+          "执行广告或数据操作时另需相应账号与工具授权"
+        ],
+        "purpose": "参考转化指标和归因口径，不代表已接入账号",
+        "local_install_status": "catalog-only; not installed by this workflow"
+      }
+    ],
+    "external_dependency_boundary": "优先本地报表与已授权后台可见数据，不假定开通第三方分析接口。广告调整、营销发送、付费数据查询需按本次具体授权执行。",
+    "desc": "以真实订单和广告报表核对销售、退货与获客成本，给出下一轮可检验动作。",
+    "platform": "抖音小店 / 拼多多 / 小红书",
+    "names": [
+      "spreadsheets:Spreadsheets",
+      "xhs-content-ops",
+      "ego-browser",
+      "unit-economics",
+      "ads",
+      "conversion-tracking"
+    ],
+    "service_note": "优先本地报表与已授权后台可见数据，不假定开通第三方分析接口。广告调整、营销发送、付费数据查询需按本次具体授权执行。"
+  }
+]

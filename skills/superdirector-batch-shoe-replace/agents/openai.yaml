@@ -1,0 +1,4 @@
+interface:
+  display_name: "超级编导批量换鞋"
+  short_description: "在超级编导桌面端批量替换关键帧鞋款，按原文件编号另存并核验结果"
+  default_prompt: "使用 $superdirector-batch-shoe-replace 将指定关键帧文件夹中的鞋替换成白底图鞋款，按原编号保存到独立文件夹。"

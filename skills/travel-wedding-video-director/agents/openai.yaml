@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅拍影像提示词导演"
+  short_description: "编写可独立删留的旅拍视频提示词，支持婚礼与个人旅拍、服装绑定和局部修复"
+  default_prompt: "使用 $travel-wedding-video-director，根据我的参考和人物资产，按五大板块编写可独立删留的视频提示词，每镜默认2秒。"

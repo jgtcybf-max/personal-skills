@@ -1,0 +1,6 @@
+interface:
+  display_name: "酷酷酷酷的涛 · 技能工作台"
+  short_description: "汇总本机影像、电商、发布、文档与效率技能，按任务选择工具"
+  icon_small: "./assets/avatar.png"
+  icon_large: "./assets/avatar.svg"
+  default_prompt: "使用 $tao-commerce-workbench，从我的本机技能库中选择工具，完成今天的任务。"

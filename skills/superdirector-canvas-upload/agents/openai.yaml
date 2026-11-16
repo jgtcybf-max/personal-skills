@@ -1,0 +1,4 @@
+interface:
+  display_name: "超级编导画布素材上传"
+  short_description: "将本地视频和图片上传到指定无限画布空白处，核对数量、补传缺图并检查云端保存"
+  default_prompt: "使用 $superdirector-canvas-upload，把我指定的视频和图片上传到超级编导的小蒋无限画布空白处，核对齐全后停下。"

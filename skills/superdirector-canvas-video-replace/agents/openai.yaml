@@ -1,0 +1,4 @@
+interface:
+  display_name: "超级编导画布视频换鞋"
+  short_description: "画布换鞋，480审核后做1080，本地加回原配音并同目录归档核验"
+  default_prompt: "使用 $superdirector-canvas-video-replace 在小蒋无限画布连线换鞋，480原生审核通过后生成1080，下载后在本地加原视频配音并检查同步，各版存回原视频同目录。"
