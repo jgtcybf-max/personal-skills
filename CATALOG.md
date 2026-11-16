@@ -6,17 +6,17 @@
 
 | 技能入口 | 说明 | 来源 / 版本类型 |
 |---|---|---|
-| [agent-desktop](skills/agent-desktop/SKILL.md) | 本机工具入口及执行说明 | 本地适配 / 上游衍生 |
+| [agent-desktop](skills/agent-desktop/SKILL.md) | 本机工具入口及执行说明 | [上游](https://github.com/vercel-labs/agent-desktop) · 本地适配 |
 | [agent-reach](skills/agent-reach/SKILL.md) | 本机工具入口及执行说明 | [上游](https://github.com/Panniantong/Agent-Reach) · 本地适配 |
 | [all-platform-video-extract](skills/all-platform-video-extract/SKILL.md) | 解析 1000+ 视频平台的视频链接（抖音/快手/B站/YouTube/TikTok/小红书/微博等），获取标题、封面、各清晰度下载直链。当用户提供视频分享文本或视频 URL 想提取下载链接时触发。 | [上游](https://github.com/engrecho/all-platform-video-extract) · 本地适配 |
 | [baoyu-xhs-images](skills/baoyu-xhs-images/SKILL.md) | Generates infographic image card series with 12 visual styles, 8 layouts, and 3 color palettes. Brea… | [上游](https://github.com/jimliu/baoyu-skills) · 本地适配 |
-| [cangjie-skill](skills/cangjie-skill/SKILL.md) | Distill a book, long-video transcript, podcast, course, or interview into a coherent set of executab… | 本地适配 / 上游衍生 |
+| [cangjie-skill](skills/cangjie-skill/SKILL.md) | Distill a book, long-video transcript, podcast, course, or interview into a coherent set of executab… | [上游](https://github.com/kangarooking/cangjie-skill) · 本地适配 |
 | [chinese-aesthetic-video-director](skills/chinese-aesthetic-video-director/SKILL.md) | 根据一句想法、参考图片、人物资产、已有镜头或生成失败结果，编写、续写和修复中式东方美学 AI 视频提示词。适用于中式园林、东方情绪短片、风光水影、含蓄人物表演、软光大光圈和短事件叙事；当用户要求“输出… | 个人工作流（未独立核实原创归属） |
 | [daily-editing-tasks](skills/daily-editing-tasks/SKILL.md) | 将用户当天提供的一组女鞋货号与多条抖音参考链接整理成可直接复制到微信的剪辑任务。适用于“整理剪辑任务”“今天剪这些”、货号加模板链接等日常派单；本技能只整理任务文字。 | 个人工作流（未独立核实原创归属） |
 | [daily-work-review](skills/daily-work-review/SKILL.md) | 结合本机微信记录、Codex对话及实际产出，按北京时间简要复盘用户今天、昨天或最近几天在干什么、做成了什么、卡在哪里。适用于“复盘今天”“看看每天干嘛”“结合微信和Codex分析最近工作”；默认简短，… | 个人工作流（未独立核实原创归属） |
 | [douyin-delete-all-works](skills/douyin-delete-all-works/SKILL.md) | Delete every work from the Works tab in an already-open, logged-in Douyin Creator Center Google Chro… | 个人工作流（未独立核实原创归属） |
 | [douyin-multi-browser-publish-cart](skills/douyin-multi-browser-publish-cart/SKILL.md) | 通过真实 Ego 浏览器在抖音创作者中心上传视频、填写文案、添加购物车商品并设置单条或批量排期。支持女鞋情绪文案；仅在用户授权发布后提交。 | 个人工作流（未独立核实原创归属） |
-| [douyin-obsidian](skills/douyin-obsidian/SKILL.md) | 抖音内容提取与归档工具（视频 + 图文）。从抖音分享链接解析内容：视频帖子支持无水印下载、语音识别提取口播文案；图文帖子提取正文文字、批量下载图片。结构化归档到 Obsidian vault。触发场景… | 本地适配 / 上游衍生 |
+| [douyin-obsidian](skills/douyin-obsidian/SKILL.md) | 抖音内容提取与归档工具（视频 + 图文）。从抖音分享链接解析内容：视频帖子支持无水印下载、语音识别提取口播文案；图文帖子提取正文文字、批量下载图片。结构化归档到 Obsidian vault。触发场景… | [上游](https://github.com/zzybrim/douyin-obsidian) · 本地适配 |
 | [douyin-product-image-export](skills/douyin-product-image-export/SKILL.md) | Download all main carousel and detail-page images from Douyin Mall or Jinritemai product links, pres… | 个人工作流（未独立核实原创归属） |
 | [douyin-shoe-video-recreate](skills/douyin-shoe-video-recreate/SKILL.md) | 拆解参考视频并改写成可拍摄的女鞋短视频脚本，或根据商品图编写保留原视频动作构图的Seedance换鞋/商品替换提示词。需要时导出静音视频与音轨；适用于女鞋复刻、商品替换及配套素材处理。 | 个人工作流（未独立核实原创归属） |
 | [douyin-shop-sales-ranking](skills/douyin-shop-sales-ranking/SKILL.md) | Analyze a Douyin product share link or copied product message, identify its shop, collect shop produ… | 个人工作流（未独立核实原创归属） |
