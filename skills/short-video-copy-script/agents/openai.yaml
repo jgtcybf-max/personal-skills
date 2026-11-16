@@ -1,0 +1,4 @@
+interface:
+  display_name: "短视频文案脚本"
+  short_description: "拆解参考视频并生成可拍摄的中文短视频脚本"
+  default_prompt: "分析给定短视频的文案结构，并将其迁移到指定品类，输出分镜、口播、字幕和发布文案。"

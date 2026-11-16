@@ -1,0 +1,4 @@
+interface:
+  display_name: "鞋图填表"
+  short_description: "把鞋款主图详情图按顺序嵌入表格模板"
+  default_prompt: "Use $shoe-template-image-fill to fill a shoe template spreadsheet with main and detail images."
