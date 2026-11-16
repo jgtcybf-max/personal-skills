@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video Splitter"
+  short_description: "Split local videos into numbered clips"
+  default_prompt: "Split this local video into 5 equal-duration clips, preserve audio, and save numbered files beside the source."

@@ -1,0 +1,7 @@
+{
+  "python": "C:/Users/TTT/AppData/Local/Programs/Python/Python312/python.exe",
+  "ffmpeg": "C:/Users/TTT/.local/share/ops-skills-20261114/tools/ffmpeg/bin/ffmpeg.exe",
+  "ffprobe": "C:/Users/TTT/.local/share/ops-skills-20261114/tools/ffmpeg/bin/ffprobe.exe",
+  "browser": "ego-browser",
+  "native_browser_pdf_enabled": false
+}
