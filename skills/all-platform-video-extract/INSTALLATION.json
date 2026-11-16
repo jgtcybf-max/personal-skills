@@ -1,0 +1,47 @@
+{
+  "name": "all-platform-video-extract",
+  "version": "2.1.0",
+  "source": {
+    "url": "https://video-extract.bajiaolu.cn/skill.zip",
+    "bytes": 13529,
+    "sha256": "37862cd65842a7ca41d30f75a1ebc4775f818ca02ab4e5d7222fde1b693f0a7a"
+  },
+  "upstreamDeclaredRepository": "https://github.com/engrecho/all-platform-video-extract",
+  "destination": "C:\\Users\\TTT\\.codex\\skills\\all-platform-video-extract",
+  "installer": "official skill-installer _validate_skill/_copy_skill helpers on vendor archive",
+  "files": [
+    {
+      "path": "scripts/download_videos.cjs",
+      "sourceSha256": "8631599db3e6488511a6145ca7f106113f03a52b6babfe6b6eea3bef0c897e3e",
+      "installedSha256": "7a6f0a8cfce47f577b69ad2bef625b11f13e57306ed51265ebe9b2d27b69fe63"
+    },
+    {
+      "path": "scripts/video_extract.cjs",
+      "sourceSha256": "83702816a225f268d7f90c1d50c7ef7a2a50b2e2b78604caeb8ae1d3ee72f140",
+      "installedSha256": "d9c2b01e68677418e5402d40da756c23bb7d27161431242e731211666255af3c"
+    },
+    {
+      "path": "SKILL.md",
+      "sourceSha256": "21c78d33b6d57ccb06bda7b885576ecab9c8bad9b2ef1cd4ea56c1c69cfc4e9a",
+      "installedSha256": "b487cbeaa9d7cd1e78642da4efee0164b7a53bb07e29ab86b34901f8e4121721"
+    }
+  ],
+  "localChanges": [
+    "Windows process.execPath Node lookup",
+    "Do not log temporary encryption key",
+    "20-second initialization HTTP timeouts",
+    "Ego-only and evidence-based local usage notes",
+    "Sanitize platform/ID and contain download directories",
+    "Propagate failed downloads into summary and nonzero exit status"
+  ],
+  "configuration": "C:\\Users\\TTT\\.extract_video_config.json",
+  "configurationCreated": true,
+  "verified": {
+    "node": "22.22.2",
+    "scriptSyntax": "passed",
+    "bothHelpCommands": "passed",
+    "liveDouyinApiCode": 200,
+    "liveDownload": "video, MP3 audio, cover, info.json saved",
+    "mediaEvidence": "C:\\Users\\TTT\\Documents\\ChatGPT\\工作\\work\\video-skill-300-20261114\\media-verification.json"
+  }
+}
