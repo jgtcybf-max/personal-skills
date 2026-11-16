@@ -1,0 +1,4 @@
+interface:
+  display_name: "每日剪辑任务"
+  short_description: "每天写一次货号、贴上抖音参考链接，直接生成可复制到微信的剪辑任务"
+  default_prompt: "用 $daily-editing-tasks 把下面的当天货号和参考链接整理成一整段微信剪辑任务，所有链接默认共用这组货号。"

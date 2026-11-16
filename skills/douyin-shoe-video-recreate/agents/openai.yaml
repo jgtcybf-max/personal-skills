@@ -1,0 +1,4 @@
+interface:
+  display_name: "女鞋视频拆解与复刻"
+  short_description: "拆解抖音参考视频并生成女鞋复刻脚本，按需导出静音画面与原声素材"
+  default_prompt: "使用 $douyin-shoe-video-recreate 拆解这条参考视频，结合我的女鞋款式输出两条可直接拍摄的脚本；如有要求，再导出静音视频和原音频。"
