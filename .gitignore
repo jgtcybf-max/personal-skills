@@ -1,0 +1,31 @@
+# Local secrets and account state
+.env
+.env.local
+.env.*.local
+auth.json
+keys.json
+cookies.json
+storage_state.json
+*.pem
+*.key
+
+# Dependencies and caches
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+_deps/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+
+# Runtime output
+logs/
+private/
+output/
+outputs/
+*.log
+*.db
+*.sqlite
+*.sqlite3
