@@ -1,0 +1,13 @@
+{
+  "fullSource": "C:\\Users\\TTT\\.local\\share\\skill-sources\\cangjie-skill-20261114",
+  "runtime": "C:\\Users\\TTT\\.codex\\skills\\cangjie-skill",
+  "productionPack": "C:\\Users\\TTT\\.codex\\skills\\cangjie-skill\\dist\\naval-almanack-pack",
+  "excludedFromRuntime": [
+    ".github",
+    "benchmarks",
+    "books",
+    "dist",
+    "tests",
+    "website"
+  ]
+}
